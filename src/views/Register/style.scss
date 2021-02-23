@@ -1,0 +1,53 @@
+@import "./../../scss/mixins";
+@import "./../../scss/variables";
+
+//telefono
+@import "./../../scss/index.scss";
+
+//TELEFONO
+.register-container {
+min-width: 400px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .register-main-title {
+    font-size: 40px;
+    margin: 0.5rem 0;
+    text-align: center;
+  }
+
+  .register-left-child {
+    background: $background-grey-light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+  }
+
+  .register-right-child {
+    display: none;
+  }
+}
+
+//TABLET Y DESKTOP
+.register-container {
+  @include tablet() {
+    min-width: none;
+    display: grid;
+    grid-template-columns: 60% 40%;
+
+    .register-left-child {
+      grid-column: 1 / 2;
+
+    }
+
+    .register-right-child {
+      background: #000;
+      display: block;
+    }
+  }
+}

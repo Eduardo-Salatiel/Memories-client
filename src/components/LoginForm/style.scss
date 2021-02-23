@@ -1,0 +1,39 @@
+@import "./../../scss/index.scss";
+
+//telefono
+.login-form {
+  border: 1px solid $border-grey;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 50px;
+
+  .login-actions-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto 1.5rem auto;
+    width: 100%;
+
+    .login-actions-checkbox {
+      padding-left: 5px;
+    }
+
+    .login-actions-register {
+      text-decoration: none;
+      color: #000;
+
+      &:hover {
+        color: $action;
+      }
+    }
+  }
+  .login-form-button {
+    @include boton($button-primary);
+  }
+}
+//Tablet y desktop
+.login-form {
+  width: 70%;
+  min-width: 400px;
+}

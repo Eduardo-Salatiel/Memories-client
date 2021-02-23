@@ -1,0 +1,32 @@
+@mixin boton($color) {
+  border: none;
+  background-color: $color;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  outline: none;
+  width: 250px;
+  height: 45px;
+}
+
+//RESPONSIVE
+@mixin telefono() {
+  @media only screen and (min-width: #{$telefono} ) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media only screen and (min-width: #{$tablet} ) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media only screen and (min-width: #{$desktop} ) {
+    @content;
+  }
+}
