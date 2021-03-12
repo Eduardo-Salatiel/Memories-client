@@ -1,30 +1,31 @@
-@import './../../scss/index.scss';
-
+@import "./../../scss/index.scss";
 
 //telefono
 .register-form {
-    border: 1px solid $border-grey;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  border: 1px solid $border-grey;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 40px;
+  width: 80%;
+  min-width: 350px;
+
+  .register-description {
+    font-weight: 500;
+    margin-bottom: 13px;
+    text-align: center;
+  }
+
+  .register-form-button {
+    @include boton($button-primary);
+  }
+}
+//Tablet y desktop
+.register-form {
+  @include tablet() {
     padding: 30px 50px;
-
-    .register-description {
-        font-weight: 500;
-        margin-bottom: 13px;
-        text-align: center;
-    }
-    
-    .register-form-button {
-        @include boton($button-primary);
-    }
-  }
-  //Tablet y desktop
-  .register-form {
     width: 70%;
-    min-width: 400px;
+    min-width: 365px;
   }
-
-
-  
+}

@@ -1,0 +1,45 @@
+@import "./../../scss/index.scss";
+
+.paginator {
+  background-color: $background-grey-light;
+  border-radius: 20px;
+  -webkit-box-shadow: 1px 2px 14px 8px rgba(0, 0, 0, 0.09);
+  box-shadow: 1px 2px 14px 8px rgba(0, 0, 0, 0.09);
+  display: flex;
+  margin: 0 auto 20px auto;
+  padding: 2px;
+  width: 200px;
+  height: 40px;
+
+  .paginator-back,
+  .paginator-next {
+    all: unset;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+
+    &,
+    .paginator-page {
+      height: 100%;
+      color: $paginator-color;
+    }
+  }
+
+  .paginator-back {
+      border-right: 1px solid $paginator-border-color;
+  }
+  
+  .paginator-next{
+    border-left: 1px solid $paginator-border-color;
+  }
+
+  .paginator-page {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}

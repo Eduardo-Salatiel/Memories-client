@@ -7,7 +7,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px 50px;
+  padding: 20px 40px;
+  width: 80%;
+  min-width: 350px;
 
   .login-actions-container {
     display: flex;
@@ -34,6 +36,9 @@
 }
 //Tablet y desktop
 .login-form {
-  width: 70%;
-  min-width: 400px;
+  @include tablet() {
+    padding: 30px 50px;
+    width: 70%;
+    min-width: 365px;
+  }
 }

@@ -1,0 +1,36 @@
+@import './../../scss/index.scss';
+
+//SMALL SCREEN GRID
+.all-post-view {
+    @media only screen and (min-width: '300px') {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+    padding: 2rem;
+    }
+}
+
+//TELEFONO
+.all-post-view {
+    @media only screen and (min-width: '600px') {
+    grid-template-columns: 1fr 1fr;
+    }
+}
+//TABLET
+.all-post-view {
+    @media only screen and (min-width: '897px') {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+//DESKTOP
+.all-post-view {
+    @media only screen and (min-width: '1022px') {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 300px;
+    }
+
+    @media only screen and (min-width: '1200px') {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

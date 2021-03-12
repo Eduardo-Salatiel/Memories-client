@@ -1,0 +1,36 @@
+@import "./../../../scss/index.scss";
+
+//TELEFONO
+.header {
+  background-color: $background-grey-light;
+  border-bottom: 1px solid $border-grey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.2rem;
+  position: relative;
+  height: 72px;
+  width: 100%;
+
+  h1 {
+    flex: 2;
+    order: 2;
+    margin: 0;
+    padding: 0.8rem 0;
+    text-align: center;
+  }
+}
+
+//TABLET Y DESKTOP
+.header {
+  @include tablet() {
+    padding: 0 1.2rem;
+    height: 72px;
+    width: 100%;
+
+    h1 {
+      flex: 0;
+      order: -1;
+    }
+  }
+}

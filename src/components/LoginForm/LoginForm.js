@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import AnimatedInputText from "../commons/AnimatedInputText/AnimatedInputText";
 import "./style.scss";
 import { login } from "../../redux/actions/auth";
+import ResponseError from "../commons/ResponseError/ResponseError";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const authState = useSelector((state) => state.authReducer);
 
   const formik = useFormik({
     initialValues: {
@@ -20,12 +22,16 @@ const LoginForm = () => {
       email: Yup.string().required(true).email(),
       password: Yup.string().required(true),
     }),
-    onSubmit: () => dispatch(login(formik.values)),
+    onSubmit: () => {
+      dispatch(login(formik.values));
+      formik.resetForm();
+    },
   });
 
   return (
     <form className="login-form" onSubmit={formik.handleSubmit}>
       <p className="login-description">¡Por que recordar es volver a vivir!</p>
+      {authState.error.status ? (<ResponseError msg={authState.error.msg}/>) : null}
       <AnimatedInputText
         type="text"
         name="email"
@@ -55,7 +61,7 @@ const LoginForm = () => {
         </Link>
       </div>
       <button type="submit" className="login-form-button">
-        Registrarte
+        Iniciar sesión
       </button>
     </form>
   );

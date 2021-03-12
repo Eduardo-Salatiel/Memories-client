@@ -1,3 +1,4 @@
+@import './../../../scss/index.scss';
 
 .generic-input-icon {
     width: 100%;
@@ -8,18 +9,27 @@
         border-radius: 10px;
         background-color: transparent;
         display: block;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
         outline: none;
         padding: 8px 10px;
         position: relative;
         width: 100%;
+        height: 40px;
     }
 
     .error-icon {
         position: absolute;
-        top: 8px;
+        top: 10px;
         right: 10px;
         width: 20px;
         height: 20px;
     }
   }
+
+  .generic-input-icon {
+    @include tablet(){
+        input {
+            margin-bottom: 2rem;
+        }
+    }
+}

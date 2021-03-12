@@ -1,0 +1,50 @@
+@import "./../../../scss/index.scss";
+
+.modal {
+  background-color: hsla(0, 0%, 0%, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  position: relative;
+  width: 90%;
+
+  i {
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+    &:hover {
+      color: $action;
+    }
+  }
+}
+
+//TABLET
+.modal {
+  @include tablet() {
+    .modal-content {
+      width: 60%;
+    }
+  }
+}
+
+//DESKTOP
+.modal {
+  @include desktop() {
+    .modal-content {
+      width: 35%;
+    }
+  }
+}

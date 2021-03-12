@@ -1,0 +1,119 @@
+@import "./../../scss/index.scss";
+
+.drop-down-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+
+  &.telefono .fas.fa-times {
+    background: #fff;
+    border-radius: 50%;
+    padding: 1rem;
+    position: absolute;
+    left: 225px;
+    transition: padding 0.3s ease-in;
+    z-index: 10;
+  }
+
+  .drop-down-menu-options {
+    background-color: $background-grey-light;
+    border-right: 1px solid silver;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-220px);
+    transition: transform 0.5s ease;
+    height: 100vh;
+    width: 220px;
+    z-index: 10;
+
+    span {
+      border-bottom: 1px solid $border-grey;
+      color: gray;
+      font-size: 18px;
+      font-weight: 600;
+      padding: 1rem 1rem 0.5rem 1rem;
+      text-align: center;
+      width: 100%;
+    }
+
+    a {
+      color: #000;
+      font-size: 16px;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      width: 100%;
+    }
+  }
+
+  .drop-down-menu-options.telefono {
+    left: 0;
+    top: 0;
+    transform: translateX(0px);
+    transition: transform 0.5s ease;
+  }
+}
+
+.drop-down-menu-transparent-background {
+  display: none;
+  background: hsla(0, 0%, 0%, .8);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+
+  &.telefono {
+    display: block;
+  }
+}
+
+//TABLET Y DESKTOP
+.drop-down-menu {
+  @include tablet() {
+    position: relative;
+
+    &:hover {
+      .drop-down-menu-options {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+    }
+
+    .fas.fa-bars {
+      &:hover {
+        color: $action;
+        cursor: pointer;
+      }
+    }
+
+    .drop-down-menu-options {
+      background-color: $background-grey-light;
+      border: 1px solid silver;
+      border-radius: 5px;
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: unset;
+      transform: translateX(0);
+      height: unset;
+      width: 220px;
+
+      a {
+        &:hover {
+          color: $action;
+        }
+      }
+    }
+  }
+}

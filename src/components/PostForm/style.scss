@@ -1,0 +1,90 @@
+@import "./../../scss/index.scss";
+
+//TELEFONO
+.post-form {
+  background-color: $background-grey-light;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  top: -500px;
+  transition: top 0.7s ease-out;
+  width: 100%;
+  height: 0;
+  z-index: -1;
+
+  //MOSTRAR EL FORMULARIO
+  &.show {
+    display: block;
+    height: 380px;
+    padding: 20px;
+    top: 0;
+    transition: top 0.7s ease-out;
+    z-index: -1;
+  }
+
+  .post-form-title {
+    display: none;
+    font-size: 24px;
+    color: $secondary-title;
+    text-align: center;
+  }
+
+  .post-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .post-form-file {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: none !important;
+      @include accionBoton(grey);
+      transition: background-color 0.3s ease;
+
+      &.loaded {
+        background-color: $select;
+        transition: background-color 0.3s ease;
+      }
+    }
+
+    .submit {
+      @include accionBoton($action);
+    }
+
+    .clear {
+      @include accionBoton($danger);
+    }
+  }
+}
+
+//TABLET
+.post-form {
+    @include tablet() {
+      margin: 0 auto 0 auto;
+      width: 500px;
+    }
+  }
+
+//DESKTOP
+.post-form {
+  @include desktop() {
+    display: block;
+    padding: 20px;
+    margin: 2rem auto 0 auto;
+    position: sticky;
+    top: 2rem;
+    width: 350px;
+    height: 450px;
+    z-index: 10;
+
+    .post-form-title {
+      display: block;
+    }
+  }
+}

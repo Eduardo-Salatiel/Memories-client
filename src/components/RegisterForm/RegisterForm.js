@@ -1,14 +1,15 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
-import GenericInputIcon from "../commons/GenericInputIcon";
+import { useDispatch, useSelector } from "react-redux";
 
 import { register } from './../../redux/actions/auth';
-
+import GenericInputIcon from "../commons/GenericInputIcon";
+import ResponseError from "../commons/ResponseError/ResponseError";
 import "./style.scss";
 
 const RegisterForm = () => {
     const dispatch = useDispatch();
+    const authState = useSelector((state) => state.authReducer);
 
     const formik = useFormik({
         initialValues:{
@@ -23,6 +24,7 @@ const RegisterForm = () => {
         }),
         onSubmit: () => {
             dispatch(register(formik.values));
+            formik.resetForm();
         }
     })
 
@@ -31,6 +33,7 @@ const RegisterForm = () => {
       <span className="register-description">
         Registrate y comparte maravillosos momentos
       </span>
+      {authState.error.status ? (<ResponseError msg={authState.error.msg}/>) : null}
         <GenericInputIcon
           type="text"
           name="name"
@@ -43,7 +46,7 @@ const RegisterForm = () => {
       <GenericInputIcon 
         type="text" 
         name="email" 
-        placeholder="Nombre de usuario" 
+        placeholder="Correo" 
         handleChange={formik.handleChange}
         handleBlur={formik.handleBlur}
         value={formik.values.email}

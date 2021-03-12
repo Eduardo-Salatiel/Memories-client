@@ -1,0 +1,9 @@
+@import './../../../scss/index.scss';
+
+.response-error-msg {
+    color: $alert-danger;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    text-align: center;
+}
