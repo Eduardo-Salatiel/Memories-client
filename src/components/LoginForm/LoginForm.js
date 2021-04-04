@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 
 import AnimatedInputText from "../commons/AnimatedInputText/AnimatedInputText";
 import "./style.scss";
 import { login } from "../../redux/actions/auth";
-import ResponseError from "../commons/ResponseError/ResponseError";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const authState = useSelector((state) => state.authReducer);
+  const { checking } = useSelector((state) => state.authReducer);
 
   const formik = useFormik({
     initialValues: {
@@ -31,7 +30,6 @@ const LoginForm = () => {
   return (
     <form className="login-form" onSubmit={formik.handleSubmit}>
       <p className="login-description">¡Por que recordar es volver a vivir!</p>
-      {authState.error.status ? (<ResponseError msg={authState.error.msg}/>) : null}
       <AnimatedInputText
         type="text"
         name="email"
@@ -53,7 +51,12 @@ const LoginForm = () => {
       />
       <div className="login-actions-container">
         <label>
-          <input type="checkbox" name="remember" onChange={formik.handleChange} value={formik.values.remember}/>
+          <input
+            type="checkbox"
+            name="remember"
+            onChange={formik.handleChange}
+            value={formik.values.remember}
+          />
           <span className="login-actions-checkbox">Recuerdame</span>
         </label>
         <Link to="/register" className="login-actions-register">
@@ -61,7 +64,11 @@ const LoginForm = () => {
         </Link>
       </div>
       <button type="submit" className="login-form-button">
-        Iniciar sesión
+        {!checking ? (
+          "Iniciar sesión"
+        ) : (
+          <i className="fas fa-circle-notch fa-spin" />
+        )}
       </button>
     </form>
   );

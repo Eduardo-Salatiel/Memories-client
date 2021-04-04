@@ -1,35 +1,41 @@
-@import './../../../scss/index.scss';
+@import "./../../../scss/index.scss";
 
 .generic-input-icon {
-    width: 100%;
-    position: relative;
-    
-    input {
-        border: 2px solid silver;
-        border-radius: 10px;
-        background-color: transparent;
-        display: block;
-        margin-bottom: 1rem;
-        outline: none;
-        padding: 8px 10px;
-        position: relative;
-        width: 100%;
-        height: 40px;
-    }
+  width: 100%;
+  position: relative;
 
-    .error-icon {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 20px;
-        height: 20px;
+  input {
+    border: 2px solid silver;
+    border-radius: 10px;
+    background-color: transparent;
+    display: block;
+    margin-bottom: 1rem;
+    outline: none;
+    padding: 8px 10px;
+    position: relative;
+    width: 100%;
+    height: 40px;
+  }
+
+  &.last {
+    input {
+      margin-bottom: .5rem;
     }
   }
 
-  .generic-input-icon {
-    @include tablet(){
-        input {
-            margin-bottom: 2rem;
-        }
+  .error-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.generic-input-icon {
+  @include tablet() {
+    input {
+      margin-bottom: 2rem;
     }
+  }
 }

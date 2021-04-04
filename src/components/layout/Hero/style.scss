@@ -5,6 +5,9 @@
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  box-shadow: 0px 11px 15px 1px rgba(0, 0, 0, 0.51);
+  -webkit-box-shadow: 0px 11px 15px 1px rgba(0, 0, 0, 0.51);
+  -moz-box-shadow: 0px 11px 15px 1px rgba(0, 0, 0, 0.51);
   position: relative;
   height: 20rem;
   width: 100%;
@@ -22,27 +25,27 @@
     height: 150px;
 
     h3 {
-        color: $secondary-title;
-        font-size: 30px;
-        margin: 0 0 .8rem 0;
+      color: $secondary-title;
+      font-size: 30px;
+      margin: 0 0 0.8rem 0;
     }
 
     span {
-        font-size: 16px;
-        line-height: 30px;
+      font-size: 16px;
+      line-height: 30px;
     }
   }
 }
 
 //TABLET
 .hero {
-    @include tablet() {
+  @include tablet() {
     position: relative;
     height: 22rem;
     width: 100%;
-  
+
     .hero-legend {
-        display: block;
+      display: block;
       position: absolute;
       left: 2rem;
       top: calc(12rem - 100px);
@@ -51,19 +54,18 @@
 
       h3 {
         font-size: 25px;
-        margin: 0 0 .5rem 0;
-    }
-    }
+        margin: 0 0 0.5rem 0;
+      }
     }
   }
-
+}
 
 //DESKTOP
 .hero {
-   @include desktop(){
+  @include desktop() {
     height: 28rem;
     width: 100%;
-  
+
     .hero-legend {
       padding: 1.5rem;
       position: absolute;
@@ -71,8 +73,6 @@
       top: calc(14rem - 100px);
       width: 25rem;
       height: 150px;
-  
     }
-   }
   }
-
+}

@@ -1,9 +1,18 @@
 import { Fragment, useRef } from "react";
-import errorIcon from './../../../assets/img/icons/cancelar.svg';
+import errorIcon from "./../../../assets/img/icons/cancelar.svg";
 
 import "./style.scss";
 
-const AnimatedInputText = ({ name, type, value, handleChange, blur, placeHolder, error, last }) => {
+const AnimatedInputText = ({
+  name,
+  type,
+  value,
+  handleChange,
+  blur,
+  placeHolder,
+  error,
+  last,
+}) => {
   const input = useRef();
 
   const handleBlur = (e) => {
@@ -12,7 +21,7 @@ const AnimatedInputText = ({ name, type, value, handleChange, blur, placeHolder,
     }
     input.current.parentElement.classList.remove("focus");
     input.current.previousElementSibling.classList.remove("focus");
-    
+
     blur(e);
   };
 
@@ -24,7 +33,9 @@ const AnimatedInputText = ({ name, type, value, handleChange, blur, placeHolder,
 
   return (
     <Fragment>
-      <label className={last ? "animated-input-text last" : "animated-input-text"}>
+      <label
+        className={last ? "animated-input-text last" : "animated-input-text"}
+      >
         <span>{placeHolder}</span>
         <input
           type={type}
@@ -36,8 +47,8 @@ const AnimatedInputText = ({ name, type, value, handleChange, blur, placeHolder,
           ref={input}
         />
         {error ? (
-        <img className="error-icon" src={errorIcon} alt="input-error" />
-      ) : null}
+          <img className="error-icon" src={errorIcon} alt="input-error" />
+        ) : null}
       </label>
     </Fragment>
   );

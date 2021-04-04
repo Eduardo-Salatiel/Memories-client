@@ -1,10 +1,12 @@
 import axios from "axios";
-import { AUTH_ERROR, LOGIN, LOGOUT, REGISTER } from "../types/types";
+import { toast } from 'react-toastify';
+import { CHECKING, FAILED_AUTH, LOGIN, LOGOUT, REGISTER, RENEW_TOKEN } from "../types/types";
 
 const baseUrl = process.env.REACT_APP_API_URL;
 
 //REGISTER
 export const register = (data) => async (dispatch) => {
+  dispatch({type: CHECKING})
   try {
     const resp = await axios({
       url: `${baseUrl}/auth/register`,
@@ -16,23 +18,23 @@ export const register = (data) => async (dispatch) => {
     });
     if (resp.data.ok) {
       localStorage.setItem("token", resp.data.token);
-
       dispatch({
         type: REGISTER,
         payload: resp.data.usuario,
       });
     }
   } catch (error) {
+    toast.error(error.response.data.error);
     dispatch({
-      type: AUTH_ERROR,
-      payload: error.response.data.error
-    });
+      type: FAILED_AUTH
+    })
   }
 };
 
 //LOGIN
 export const login = (data) => async (dispatch) => {
   const { remember, email } = data;
+  dispatch({type: CHECKING})
   try {
     const resp = await axios({
       url: `${baseUrl}/auth/login`,
@@ -52,12 +54,37 @@ export const login = (data) => async (dispatch) => {
       });
     }
   } catch (error) {
+    toast.error(error.response.data.error);
     dispatch({
-      type: AUTH_ERROR,
-      payload: error.response.data.error
+      type: FAILED_AUTH
     })
   }
 };
 
+export const renewToken = (token) => async(dispatch) => {
+    dispatch({type: CHECKING})
+    try {
+      const resp = await axios({
+        url: `${baseUrl}/auth/renew`,
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          "Authorization": token
+        },
+      });
+      localStorage.setItem('token', resp.data.token);
+      dispatch({
+        type: RENEW_TOKEN,
+        payload: resp.data.usuario,
+      });
+    } catch (error) {
+      localStorage.removeItem('token');
+      dispatch({type: FAILED_AUTH})
+    }
+  };
 
-export const logout = () => (dispatch) => dispatch({type: LOGOUT})
+
+export const logout = () => (dispatch) => {
+  localStorage.removeItem('token');
+  dispatch({type: LOGOUT})
+}

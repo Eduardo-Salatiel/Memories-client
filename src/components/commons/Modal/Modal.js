@@ -16,7 +16,7 @@ function disableScroll() {
   document.getElementById("modalRef").style.top = `${y}px`;
 }
 
-const Modal = ({ component: Component }) => {
+const Modal = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {

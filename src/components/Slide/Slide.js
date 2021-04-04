@@ -15,7 +15,7 @@ const Slide = ({images}) => {
         },[4000])
 
         return () => clearInterval(tick)
-    }, [activeImage, images.length])
+    }, [activeImage, images.length]);
 
     return ( 
         <div className="slide-container">

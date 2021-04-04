@@ -1,11 +1,13 @@
 import { Fragment, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { logout } from "../../redux/actions/auth";
 
 import "./style.scss";
 
 const DropDownMenu = () => {
   const [telefono, setTelefono] = useState("");
+  const authState = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
 
   const handleClickMenu = () => {
@@ -31,8 +33,8 @@ const DropDownMenu = () => {
       )}
       <div className={`drop-down-menu-options ${telefono}`}>
         <span>Menú</span>
-        <a href="*"> Cuenta</a>
-        <a href="*" onClick={handleClickLogout}> Cerrar sesión</a>
+        <Link to={`/profile/${authState.uid}`}>Cuenta</Link>
+        <a href="*" onClick={handleClickLogout}>Cerrar sesión</a>
       </div>
     </div>
     <div className={`drop-down-menu-transparent-background ${telefono}`} />

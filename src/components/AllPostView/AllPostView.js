@@ -16,7 +16,7 @@ const AllPostView = () => {
 
   return (
     <Fragment>
-      {postState.posts.length === 0 ? (
+      {postState.searching ? (
         <Spinner />
       ) : (
         <div className="all-post-view">
@@ -29,4 +29,4 @@ const AllPostView = () => {
   );
 };
 
-export default AllPostView;
+export default React.memo(AllPostView);

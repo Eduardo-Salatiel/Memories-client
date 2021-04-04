@@ -1,15 +1,11 @@
-import { AUTH_ERROR, LOGIN, LOGOUT, REGISTER } from "../types/types";
+import { FAILED_AUTH, LOGIN, LOGOUT, REGISTER, RENEW_TOKEN, CHECKING } from "../types/types";
 
 const initialState = {
     uid: null,
     checking: false,
-    logged: false,
+    logged: null,
     name: null,
     email: null,
-    error: {
-        status: false,
-        msg: ''
-    }
 }
 
 export const authReducer = (state = initialState, action) => {
@@ -21,33 +17,41 @@ export const authReducer = (state = initialState, action) => {
                 logged: true,
                 name: action.payload.email,
                 email: action.payload.email,
-                error: {
-                    status: false,
-                    msg: ''
-                }
             }
         case LOGIN:
             return {
                 ...state,
                 uid: action.payload.uid,
+                checking: false,
                 logged: true,
                 name: action.payload.name,
                 email: action.payload.email,
-                error: {
-                    status: false,
-                    msg: ''
-                }
             }
-        case AUTH_ERROR:
+        case RENEW_TOKEN:
             return {
                 ...state,
-                error: {
-                    status: true,
-                    msg: action.payload
-                }
+                uid: action.payload.uid,
+                checking: false,
+                logged: true,
+                name: action.payload.name,
+                email: action.payload.email
+
+            }
+        case CHECKING:
+            return {
+                ...state,
+                checking: true
+            }
+        case FAILED_AUTH:
+            return {
+                initialState,
+                logged: false
             }
         case LOGOUT: 
-            return initialState
+            return {
+                initialState,
+                logged: false
+            }
     
         default:
             return state;

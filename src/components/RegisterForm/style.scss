@@ -20,6 +20,16 @@
   .register-form-button {
     @include boton($button-primary);
   }
+
+  .register-actions-login {
+    text-decoration: none;
+    color: #000;
+    margin-bottom: 1.5rem;
+
+    &:hover {
+      color: $action;
+    }
+  }
 }
 //Tablet y desktop
 .register-form {

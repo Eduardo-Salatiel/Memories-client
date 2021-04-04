@@ -2,6 +2,7 @@
 
 //SMALL SCREEN GRID
 .all-post-view {
+    transition: all .3s ease;
     @media only screen and (min-width: '300px') {
     display: grid;
     grid-template-columns: 1fr;

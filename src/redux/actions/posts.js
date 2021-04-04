@@ -1,5 +1,6 @@
 import axios from "axios";
-import { GET_POST, NEW_POST, OPEN_MODAL, POST_ERROR } from "../types/types";
+import { toast } from 'react-toastify';
+import { GET_POST, NEW_POST, OPEN_MODAL, SEARCHING} from "../types/types";
 
 const baseUrl = process.env.REACT_APP_API_URL;
 
@@ -26,16 +27,14 @@ export const addPost = (body) => async (dispatch) => {
     })
     dispatch({type: OPEN_MODAL})
   } catch (error) {
-    dispatch({
-      type: POST_ERROR,
-      payload: error.response.data.error,
-    });
+    toast.error(error.response.data.error);
   }
 };
 
 //OBTENER TODOS LOS POSTS
 export const getPost = (limit = 12,skipt = 0 ) => async (dispatch) => {
   const token = localStorage.getItem("token");
+  dispatch({type: SEARCHING})
   try {
     const res = await axios({
       url: `${baseUrl}/post/get-post?limit=${limit}&skipt=${skipt}`,

@@ -10,9 +10,10 @@ const GenericInputIcon = ({
   handleBlur,
   value,
   error,
+  last
 }) => {
   return (
-    <div className="generic-input-icon">
+    <div className={last ? "generic-input-icon last" : "generic-input-icon"}>
       <input
         type={type}
         name={name}

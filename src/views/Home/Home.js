@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+
 import Hero from "../../components/layout/Hero";
 import Header from "../../components/layout/Header";
 import HomeBody from "../../components/layout/HomeBody/HomeBody";

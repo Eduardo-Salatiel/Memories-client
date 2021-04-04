@@ -1,38 +1,32 @@
-import { GET_POST, NEW_POST, POST_ERROR } from "../types/types";
+import { GET_POST, NEW_POST, SEARCHING } from "../types/types";
 
 const initialState = {
-  selectedPost: [],
   newPost: null,
-  pages: 0,
+  searching: false,
   posts: [],
-  error: {
-    status: false,
-    msg: "",
-  },
+  pages: 0,
+  selectedPost: [],
 };
 
 export const postsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SEARCHING:
+      return {
+        ...state,
+        searching: true,
+      };
     case GET_POST:
       return {
         ...state,
         posts: action.payload.postMessage,
-        pages: action.payload.pages
+        pages: action.payload.pages,
+        searching: false,
       };
     case NEW_POST:
       return {
         ...state,
-        newPost: action.payload
-      }
-    case POST_ERROR:
-      return {
-        ...state,
-        error: {
-          status: true,
-          msg: action.payload,
-        },
+        newPost: action.payload,
       };
-
     default:
       return state;
   }

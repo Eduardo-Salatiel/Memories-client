@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../../redux/actions/modal";
-import { getPost } from "../../../redux/actions/posts";
 import { cerrarModal } from "../../../utils/modal";
 
 import MemorieCard from "../../MemorieCard/MemorieCard";
@@ -12,7 +11,6 @@ const NewPostModal = () => {
 
   const handleCloseClick = () => {
     cerrarModal(dispatch,closeModal);
-    dispatch(getPost());
   };
 
   return (
