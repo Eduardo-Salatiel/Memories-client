@@ -30,9 +30,9 @@ const RegisterForm = () => {
 
   return (
     <form className="register-form" onSubmit={formik.handleSubmit}>
-      <span className="register-description">
+      <p className="register-description">
         Registrate y comparte maravillosos momentos
-      </span>
+      </p>
       <GenericInputIcon
         type="text"
         name="name"

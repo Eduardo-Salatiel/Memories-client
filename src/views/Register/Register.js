@@ -13,9 +13,7 @@ const Register = () => {
           <RegisterForm />
         </div>
         <div className="register-right-child">
-          <div>
             <Slide images={imagesRegister} />
-          </div>
         </div>
     </div>
   );
