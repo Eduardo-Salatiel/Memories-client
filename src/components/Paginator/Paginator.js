@@ -16,6 +16,7 @@ const Paginator = () => {
   }, [skipt,limit]);
 
   const handlePreviousClick = (e) => {
+    e.stopPropagation();
     if (page === 1) return;
     setSkipt(skipt - limit);
     setPage(page - 1);

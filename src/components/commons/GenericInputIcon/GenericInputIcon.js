@@ -21,6 +21,7 @@ const GenericInputIcon = ({
         onChange={handleChange}
         onBlur={handleBlur}
         value={value}
+        autoComplete="off"
       />
       {error ? (
         <img className="error-icon" src={errorIcon} alt="input-error" />

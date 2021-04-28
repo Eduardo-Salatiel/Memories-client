@@ -45,6 +45,7 @@ const AnimatedInputText = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
           ref={input}
+          autoComplete="off"
         />
         {error ? (
           <img className="error-icon" src={errorIcon} alt="input-error" />
